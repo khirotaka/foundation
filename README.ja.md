@@ -1,10 +1,10 @@
 # Foundation
 機械学習研究のためのDockerfile
 
-# Usage
+## Usage
 このリポジトリで管理されているDockerfileは、Docker Hubの[hkawashima/foundation](https://hub.docker.com/r/hkawashima/foundation)からビルド済みのものを入手可能です。
 
-## tag: core
+### tag: core
 タグ名に `core` が付いているイメージは最もシンプルな構成のDockerイメージです。
 以下の `tag: lab` などはこのイメージをベースにしています。
 起動には、以下のオプションを指定してください。
@@ -23,7 +23,7 @@ docker run -it hkawashima/foundation:cpu-core
 *   Pandas
 
 
-## tag: lab
+### tag: lab
 タグ名に `lab` が付いているイメージには `Jupyter Lab` が含まれています。
 起動には、以下のオプションを指定してください。
 
