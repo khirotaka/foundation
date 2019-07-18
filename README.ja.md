@@ -22,7 +22,6 @@ docker run -it hkawashima/foundation:cpu-core
 *   Seaborn
 *   Pandas
 
-
 ### tag: lab
 タグ名に `lab` が付いているイメージには `Jupyter Lab` が含まれています。
 起動には、以下のオプションを指定してください。
@@ -32,6 +31,4 @@ docker run -it -p 8888:8888 hkawashima/foundation:cpu-lab
 ```
 
 その後、ホストのブラウザで `localhost:8888` に接続することで `IDE` を起動することができます。
-
-
 
