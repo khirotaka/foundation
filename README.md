@@ -1,5 +1,8 @@
+[English](README.md) | [日本語](README.ja.md)
+
 # Foundation
 Dockerfiles for research of machine learning.
+
 
 # Usage
 Those images are hosted on [Docker Hub](https://hub.docker.com/r/hkawashima/foundation).
