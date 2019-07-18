@@ -31,4 +31,3 @@ docker run -it -p 8888:8888 hkawashima/foundation:cpu-lab
 ```
 
 その後、ホストのブラウザで `localhost:8888` に接続することで `IDE` を起動することができます。
-
