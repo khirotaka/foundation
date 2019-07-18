@@ -1,4 +1,7 @@
 # Foundation
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/08c1f2f2f2994da098439e4c3614b8e2)](https://app.codacy.com/app/KawashimaHirotaka/foundation?utm_source=github.com&utm_medium=referral&utm_content=KawashimaHirotaka/foundation&utm_campaign=Badge_Grade_Dashboard)
+
 Dockerfiles for research of machine learning.
 
 # Usage
