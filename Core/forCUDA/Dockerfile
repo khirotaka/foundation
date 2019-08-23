@@ -1,40 +1,30 @@
-FROM nvidia/cuda:9.0-cudnn7-runtime-ubuntu16.04
-ARG PYTHON_VERSION=3.6
+FROM nvidia/cuda:10.0-cudnn7-runtime-ubuntu18.04
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
-         build-essential \
-         cmake \
-         git \
-         curl \
-         ca-certificates \
-         libjpeg-dev \
-         libpng-dev && \
-     rm -rf /var/lib/apt/lists/*
+ENV PATH $PATH:/root/.local/bin
 
-RUN curl -o ~/miniconda.sh -O https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh  && \
-     chmod +x ~/miniconda.sh && \
-     ~/miniconda.sh -b -p /opt/conda && \
-     rm ~/miniconda.sh && \
-     /opt/conda/bin/conda install -y python=$PYTHON_VERSION numpy pyyaml scipy ipython mkl mkl-include ninja cython typing && \
-     /opt/conda/bin/conda install -y -c pytorch magma-cuda100 && \
-     /opt/conda/bin/conda clean -ya
-ENV PATH /opt/conda/bin:$PATH
+WORKDIR /tmp/python
+RUN apt update && apt install -y --no-install-recommends \
+        build-essential \
+        cmake \
+        git \
+        curl \
+        ca-certificates \
+        libjpeg-dev \
+        libpng-dev \
+        python3-pip && \
+    rm -rf /var/lib/apt/lists/* && \
+    pip3 install -U pip
 
-WORKDIR /opt/pytorch
-COPY . .
+RUN pip3 install --user \
+    torch \
+    torchvision \
+    comet-ml \
+    pandas \
+    tqdm \
+    scikit-learn \
+    seaborn \
+    pipenv
 
-RUN git submodule update --init --recursive
-RUN TORCH_CUDA_ARCH_LIST="3.5 5.2 6.0 6.1 7.0+PTX" TORCH_NVCC_FLAGS="-Xfatbin -compress-all" \
-    CMAKE_PREFIX_PATH="$(dirname $(which conda))/../" \
-    pip install -v .
+WORKDIR /workspace
+RUN chmod -R a+w .
 
-RUN git clone https://github.com/pytorch/vision.git && cd vision && pip install -v .
-
-RUN conda update -y -n base conda \
-    && conda install -y scikit-learn \
-    && conda install -y matplotlib \
-    && conda install -y seaborn \
-    && conda install -y pandas \
-    && pip install comet-ml
-
-ENTRYPOINT /bin/sh
