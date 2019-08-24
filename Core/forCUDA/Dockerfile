@@ -8,10 +8,12 @@ RUN apt update && apt install -y --no-install-recommends \
         cmake \
         git \
         curl \
+        vim \
         ca-certificates \
         libjpeg-dev \
         libpng-dev \
-        python3-pip && \
+        python3-pip \
+        python3-setuptools && \
     rm -rf /var/lib/apt/lists/* && \
     pip3 install -U pip
 
