@@ -10,8 +10,37 @@ Dockerfiles for research of machine learning.
 Those images are hosted on [Docker Hub](https://hub.docker.com/r/hkawashima/foundation).
 So please pull image and run it.
 
+These container images have the following libraries and applications installed by default.
+
+* Python 3.6.8
+* PyTorch >= 1.1.0
+* Torchvision
+* Comet-ML
+* Scikit-Learn
+* Pandas
+* matplotlib
+* Seaborn
+
+### tag: core
+the most simple container images. 
+these container images tagged `lab` are based on `core`.
+
 ```sh
-docker run -it -p 8888:8888 hkawashima/foundation
+docker run -it hkawashima/foundation:core-forCPU
+```
+
+if you want to run container on your GPU, you should use `core-forCUDA`.
+
+```sh
+docker run -it --runtime=nvidia hkawashima/foundation:core-forCUDA
+```
+
+### tag: lab
+these container images contain `Jupyter Lab`.
+
+
+```sh
+docker run -it -p 8888:8888 hkawashima/foundation:lab-forCPU
 ```
 
 and access `localhost:8888` on your web browser.
