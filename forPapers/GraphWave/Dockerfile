@@ -1,5 +1,7 @@
 FROM continuumio/miniconda3:4.6.14
 
+LABEL maintainer "Hirotaka Kawashima"
+
 RUN pip install --upgrade pip setuptools && \
     pip install networkx pandas tqdm texttable PyGSP numpy
 
